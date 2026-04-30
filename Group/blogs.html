@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="no">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
@@ -11,18 +12,21 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-    <title>Restaurant Web Site</title>
+
+    <title>Blogger</title>
     <link rel="stylesheet" href="styles/style.css" />
   </head>
+
   <body>
-    <!--! header section start  -->
+    <!-- HEADER -->
     <header class="header">
-      <a href="#" class="logo">
+      <a href="index.html" class="logo">
         <img src="images/logo.png" alt="logo" />
       </a>
+
       <nav class="navbar">
-        <a href="index.html" class="active">Hjem</a>
-        <a href="about.html">Om </a>
+        <a href="index.html">Hjem</a>
+        <a href="about.html">Om</a>
         <a href="menu.html">Meny</a>
         <a href="produkter.html">Produkter</a>
         <a href="review.html">Anmeldelse</a>
@@ -47,7 +51,7 @@
           type="text"
           class="search-input"
           id="search-box"
-          placeholder="search here"
+          placeholder="Søk..."
         />
         <i class="fas fa-search"></i>
       </div>
@@ -55,131 +59,101 @@
       <div class="cart-items-container">
         <div class="cart-item">
           <i class="fas fa-times"></i>
-          <img src="images/menu-1.png" alt="menu" />
+          <img src="images/menu-1.png" alt="" />
           <div class="content">
-            <h3>cart item 01</h3>
-            <div class="price">149 Kr./-</div>
+            <h3>Produkt</h3>
+            <div class="price">149 Kr</div>
           </div>
         </div>
-        <div class="cart-item">
-          <i class="fas fa-times"></i>
-          <img src="images/menu-2.png" alt="menu" />
-          <div class="content">
-            <h3>cart item 02</h3>
-            <div class="price">149 Kr./-</div>
-          </div>
-        </div>
-        <div class="cart-item">
-          <i class="fas fa-times"></i>
-          <img src="images/menu-3.png" alt="menu" />
-          <div class="content">
-            <h3>cart item 03</h3>
-            <div class="price">149 Kr./-</div>
-          </div>
-        </div>
-        <div class="cart-item">
-          <i class="fas fa-times"></i>
-          <img src="images/menu-4.png" alt="menu" />
-          <div class="content">
-            <h3>cart item 04</h3>
-            <div class="price">149 Kr./-</div>
-          </div>
-        </div>
-        <a href="#" class="btn">til kassen</a>
+
+        <a href="#" class="btn">Til kassen</a>
       </div>
     </header>
-    <!--! header section end  -->
 
-    <!--! blogs section start  -->
+    <!-- BLOGS -->
     <section class="blogs" id="blogs">
-        <h1 class="heading">vår <span>blogg</span></h1>
-        <div class="box-container">
-          <div class="box">
-            <div class="image">
-              <img src="images/blog-1.jpg" alt="blog" />
-            </div>
-            <div class="content">
-              <a href="#" class="title">hvordan lager man burgere?</a>
-              <span>by admin / 10. mai, 2020</span>
-              <p>
-                Da bevares strukturen i kjøttet og den naturlige fordelingen av kjøtt,fett og luft, og du unngår kompakte burgere.
-                Løkmarmelade: Kutt løken i terninger eller skiver. Varm oljen i en kjele, tilsett løken og fres den blank og myk.
-                Tilsett resten av ingrediensene og la løken småkoke på middels varme i 15–20 minutter, eller til den har marmeladekonsistens. 
-                Smak til med salt og pepper.
-                Hjemmelaget burger: Ha litt vann på en fjøl og form burgere. Ikke jobb for mye med kjøttdeigen. 
-                Krydre burgerne.Stek eller grill burgerne ett til to minutter på hver side på høy varme. 
-                Etterstek på lav varme med lokk, så blir de ekstra saftige.Server med briochebrød, grønn salat, tomatskiver, chilimajones, cheddarost og løkmarmelade. 
-                Topp gjerne det hele med sylteagurk og server ovnsstekte poteter til.
-              </p>
-              <a href="#" class="btn">Les mer</a>
-            </div>
+      <h1 class="heading">vår <span>blogg</span></h1>
+
+      <div class="box-container">
+        <!-- BLOG 1 -->
+        <div class="box">
+          <div class="image">
+            <img src="images/blog-1.jpg" alt="" />
           </div>
-          <div class="box">
-            <div class="image">
-              <img src="images/blog-2.jpg" alt="blog" />
-            </div>
-            <div class="content">
-              <a href="#" class="title">hvordan lager man vegetar burgere?</a>
-              <span>by admin / 10. mai, 2020</span>
-              <p>
-                Finhakk aromasopp og løk og stek det i en varm stekepanne med olje til det er mykt og blankt. Hell det over i en arbeidsbolle og avkjøl.
-                Mos halvparten av bønnene grovt med en gaffel eller en potetstamper. Hakk eller riv brokkoli grovt. Ha alt i en bolle og tilsett resten av ingrediensene (unntatt olje). Bland alt godt sammen og smak til med salt og pepper. Sett til side og la blandingen hvile (svelle) i 10-15 minutter.
-                Fukt hendene, form 4 burgere og legg dem på bakepapir til alle er laget. Stek burgerne i en varm stekepanne med olje i 3-5 minutter på hver side, til de er gylne og sprø på begge sider.
-                Del hamburgerbrød, legg på salat, burger og skivede tomater før toppene legges på.
-                Server gjerne vegetarburgerne med små sylteagurker og ketchup eller barbecuesaus.
-              </p>
-              <a href="#" class="btn">Les mer</a>
-            </div>
-          </div>
-          <div class="box">
-            <div class="image">
-              <img src="images/blog-3.jpg" alt="blog" />
-            </div>
-            <div class="content">
-              <a href="#" class="title">hvordan lager man glutenfrie burgere?</a>
-              <span>by admin / 10. mai, 2020</span>
-              <p>
-                Til 8 burgere trenger du;
-                800 gr kjøttdeig, 4-5 ss barbecuesaus, 1 egg,1 ss tomatpesto. 
-                Kan erstattes med 1 fedd hvitløk og 1/2 ts chilipulver,salt/pepper
-                Bruk gjerne en kjøkkenmaskin til å røre sammen alle ingrediensene. Form burgere og stek de i  smør på høy varme på begge sider til de er akkurat så stekt som du vil ha de. Server med glutenfrie hamburgerbrød og favoritt fyllet ditt.
-              </p>
-              <a href="#" class="btn">Les mer</a>
-            </div>
+          <div class="content">
+            <a href="#" class="title">Hvordan lager man burgere?</a>
+            <span>av admin / 10. mai, 2020</span>
+            <p>
+              Lær hvordan du lager saftige og perfekte burgere med enkle tips.
+            </p>
+            <a href="#" class="btn">Les mer</a>
           </div>
         </div>
-      </section>
-    <!--! blogs section end  -->
 
-    <!--! footer section start  -->
+        <!-- BLOG 2 -->
+        <div class="box">
+          <div class="image">
+            <img src="images/blog-2.jpg" alt="" />
+          </div>
+          <div class="content">
+            <a href="#" class="title">
+              Hvordan lager man vegetar burgere?
+            </a>
+            <span>av admin / 10. mai, 2020</span>
+            <p>
+              Sunne og smakfulle vegetarburgere laget med ferske ingredienser.
+            </p>
+            <a href="#" class="btn">Les mer</a>
+          </div>
+        </div>
+
+        <!-- BLOG 3 -->
+        <div class="box">
+          <div class="image">
+            <img src="images/blog-3.jpg" alt="" />
+          </div>
+          <div class="content">
+            <a href="#" class="title">
+              Hvordan lager man glutenfrie burgere?
+            </a>
+            <span>av admin / 10. mai, 2020</span>
+            <p>
+              Perfekte glutenfrie burgere med riktig smak og konsistens.
+            </p>
+            <a href="#" class="btn">Les mer</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
     <section class="footer">
       <div class="search">
-        <input type="text" class="search-input" placeholder="Search" />
-        <button class="btn btn-primary">search</button>
+        <input type="text" class="search-input" placeholder="Søk" />
+        <button class="btn btn-primary">Søk</button>
       </div>
+
       <div class="share">
         <a href="#" class="fab fa-facebook"></a>
         <a href="#" class="fab fa-twitter"></a>
         <a href="#" class="fab fa-instagram"></a>
         <a href="#" class="fab fa-linkedin"></a>
-        <a href="#" class="fab fa-pinterest"></a>
       </div>
 
       <div class="links">
-        <a href="#" class="active">Hjem</a>
-        <a href="#">Om</a>
-        <a href="#">Meny</a>
-        <a href="#">Produkter</a>
-        <a href="#">Anmeldelse</a>
-        <a href="#">Kontakt</a>
-        <a href="#">Blogger</a>
+        <a href="index.html">Hjem</a>
+        <a href="about.html">Om</a>
+        <a href="menu.html">Meny</a>
+        <a href="produkter.html">Produkter</a>
+        <a href="review.html">Anmeldelse</a>
+        <a href="contact.html">Kontakt</a>
+        <a href="blogs.html" class="active">Blogger</a>
       </div>
 
       <div class="credit">
-        Laget av <span>Group 7</span> | Alle Rettigheter Forbeholdt
+        Laget av <span>Group 7</span> | Alle rettigheter forbeholdt
       </div>
     </section>
-    <!--! footer section end  -->
 
     <script src="js/script.js"></script>
   </body>
