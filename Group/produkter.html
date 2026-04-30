@@ -11,15 +11,16 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-    <title>Vår Produkter</title>
+    <title>Våre Produkter</title>
     <link rel="stylesheet" href="styles/style.css" />
   </head>
+
   <body>
-    <!--! header section start  -->
     <header class="header">
-      <a href="#" class="logo">
+      <a href="index.html" class="logo">
         <img src="images/logo.png" alt="logo" />
       </a>
+
       <nav class="navbar">
         <a href="index.html">Hjem</a>
         <a href="about.html">Om</a>
@@ -53,117 +54,96 @@
       </div>
 
       <div class="cart-items-container">
-        <div class="cart-item">
-          <i class="fas fa-times"></i>
-          <img src="images/menu-1.png" alt="menu" />
-          <div class="content">
-            <h3>cart item 01</h3>
-            <div class="price">$15.99/-</div>
-          </div>
-        </div>
-        <div class="cart-item">
-          <i class="fas fa-times"></i>
-          <img src="images/menu-2.png" alt="menu" />
-          <div class="content">
-            <h3>cart item 02</h3>
-            <div class="price">$15.99/-</div>
-          </div>
-        </div>
-        <div class="cart-item">
-          <i class="fas fa-times"></i>
-          <img src="images/menu-3.png" alt="menu" />
-          <div class="content">
-            <h3>cart item 03</h3>
-            <div class="price">$15.99/-</div>
-          </div>
-        </div>
-        <div class="cart-item">
-          <i class="fas fa-times"></i>
-          <img src="images/menu-4.png" alt="menu" />
-          <div class="content">
-            <h3>cart item 04</h3>
-            <div class="price">$15.99/-</div>
-          </div>
-        </div>
-        <a href="#" class="btn">checkout now</a>
+        <div class="cart-items"></div>
+        <div class="cart-total">Total: 0 Kr</div>
+        <a href="#" class="btn">Til kassen</a>
       </div>
     </header>
-    <!--! header section end  -->
 
-    <!--! products section start  -->
     <section class="products" id="products">
-      <h1 class="heading">vår <span>produkter</span></h1>
+      <h1 class="heading">våre <span>produkter</span></h1>
+
       <div class="box-container">
-        <div class="box">
+        <div class="box product-card">
           <div class="box-head">
-            <span class="title">MINI BURGER</span>
-            <a href="#" class="name">Halal Burger</a>
+            <span class="title product-description">110gr / 300 Cal</span>
+            <a href="#" class="name product-name">Halal Burger</a>
           </div>
+
           <div class="image">
-            <img src="images/product-1.png" alt="" />
+            <img src="images/product-1.png" alt="Halal Burger" />
           </div>
+
           <div class="box-bottom">
             <div class="info">
-              <b class="price">60 Kr</b>
-              <span class="amount">110gr / 300 Cal</span>
+              <b class="price product-price">60 Kr</b>
+              <span class="amount">MINI BURGER</span>
             </div>
+
             <div class="product-btn">
-              <a href="#">
+              <button class="add-to-cart">
                 <i class="fas fa-plus"></i>
-              </a>
+              </button>
             </div>
           </div>
         </div>
-        <div class="box">
+
+        <div class="box product-card">
           <div class="box-head">
-            <span class="title">MINI BURGER</span>
-            <a href="#" class="name">Glutenfri Burger</a>
+            <span class="title product-description">110gr / 300 Cal</span>
+            <a href="#" class="name product-name">Glutenfri Burger</a>
           </div>
+
           <div class="image">
-            <img src="images/product-2.png" alt="" />
+            <img src="images/product-2.png" alt="Glutenfri Burger" />
           </div>
+
           <div class="box-bottom">
             <div class="info">
-              <b class="price">60 Kr</b>
-              <span class="amount">110gr / 300 Cal</span>
+              <b class="price product-price">60 Kr</b>
+              <span class="amount">MINI BURGER</span>
             </div>
+
             <div class="product-btn">
-              <a href="#">
+              <button class="add-to-cart">
                 <i class="fas fa-plus"></i>
-              </a>
+              </button>
             </div>
           </div>
         </div>
-        <div class="box dark-bg">
+
+        <div class="box product-card dark-bg">
           <div class="box-head">
-            <span class="title">MINI BURGER</span>
-            <a href="#" class="name">Vegetar Burger</a>
+            <span class="title product-description">110gr / 300 Cal</span>
+            <a href="#" class="name product-name">Vegetar Burger</a>
           </div>
+
           <div class="image">
-            <img src="images/dark-product.jpg" alt="" />
+            <img src="images/dark-product.jpg" alt="Vegetar Burger" />
           </div>
+
           <div class="box-bottom">
             <div class="info">
-              <b class="price">60 Kr</b>
-              <span class="amount">110gr / 300 Cal</span>
+              <b class="price product-price">60 Kr</b>
+              <span class="amount">MINI BURGER</span>
             </div>
+
             <div class="product-btn">
-              <a href="#">
+              <button class="add-to-cart">
                 <i class="fas fa-plus"></i>
-              </a>
+              </button>
             </div>
           </div>
         </div>
       </div>
     </section>
-    <!--! products section end  -->
 
-    <!--! footer section start  -->
     <section class="footer">
       <div class="search">
-        <input type="text" class="search-input" placeholder="søk" />
-        <button class="btn btn-primary">søk</button>
+        <input type="text" class="search-input" placeholder="Søk" />
+        <button class="btn btn-primary">Søk</button>
       </div>
+
       <div class="share">
         <a href="#" class="fab fa-facebook"></a>
         <a href="#" class="fab fa-twitter"></a>
@@ -173,21 +153,21 @@
       </div>
 
       <div class="links">
-        <a href="#">Hjem</a>
-        <a href="#">Om</a>
-        <a href="#">Meny</a>
-        <a href="#" class="active">Produkter</a>
-        <a href="#">Anmeldelse</a>
-        <a href="#">Kontakt</a>
-        <a href="#">Blogger</a>
+        <a href="index.html">Hjem</a>
+        <a href="about.html">Om</a>
+        <a href="menu.html">Meny</a>
+        <a href="produkter.html" class="active">Produkter</a>
+        <a href="review.html">Anmeldelse</a>
+        <a href="contact.html">Kontakt</a>
+        <a href="blogs.html">Blogger</a>
       </div>
 
       <div class="credit">
         Laget av <span>Group 7</span> | Alle Rettigheter Forbeholdt
       </div>
     </section>
-    <!--! footer section end  -->
 
     <script src="js/script.js"></script>
+    <script src="js/cart.js"></script>
   </body>
 </html>
