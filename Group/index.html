@@ -18,7 +18,6 @@
   </head>
 
   <body>
-    <!-- header section start -->
     <header class="header">
       <a href="index.html" class="logo">
         <img src="images/logo.png" alt="logo" />
@@ -38,9 +37,12 @@
         <button id="search-btn">
           <i class="fas fa-search"></i>
         </button>
-        <button id="cart-btn">
+
+        <button id="cart-btn" class="cart-icon">
           <i class="fas fa-shopping-cart"></i>
+          <span class="cart-count">0</span>
         </button>
+
         <button id="menu-btn">
           <i class="fas fa-bars"></i>
         </button>
@@ -56,49 +58,14 @@
         <i class="fas fa-search"></i>
       </div>
 
-      <div class="cart-items-container">
-        <div class="cart-item">
-          <i class="fas fa-times"></i>
-          <img src="images/menu-1.png" alt="menu" />
-          <div class="content">
-            <h3>cart item 01</h3>
-            <div class="price">149 Kr./-</div>
-          </div>
-        </div>
-
-        <div class="cart-item">
-          <i class="fas fa-times"></i>
-          <img src="images/menu-2.png" alt="menu" />
-          <div class="content">
-            <h3>cart item 02</h3>
-            <div class="price">149 Kr./-</div>
-          </div>
-        </div>
-
-        <div class="cart-item">
-          <i class="fas fa-times"></i>
-          <img src="images/menu-3.png" alt="menu" />
-          <div class="content">
-            <h3>cart item 03</h3>
-            <div class="price">149 Kr./-</div>
-          </div>
-        </div>
-
-        <div class="cart-item">
-          <i class="fas fa-times"></i>
-          <img src="images/menu-4.png" alt="menu" />
-          <div class="content">
-            <h3>cart item 04</h3>
-            <div class="price">149 Kr./-</div>
-          </div>
-        </div>
-
+      <div class="cart-items-container cart-box">
+        <button class="close-cart">X</button>
+        <div class="cart-items"></div>
+        <div class="cart-total">Total: 0 Kr</div>
         <a href="#" class="btn">Til kassen</a>
       </div>
     </header>
-    <!-- header section end -->
 
-    <!-- home section start -->
     <section class="home" id="home">
       <div class="content">
         <h3>EXPRESS HJEMMELEVERING</h3>
@@ -106,9 +73,7 @@
         <a href="produkter.html" class="btn">Bestill nå</a>
       </div>
     </section>
-    <!-- home section end -->
 
-    <!-- menu section start -->
     <section class="menu" id="menu">
       <h1 class="heading">vår <span>meny</span></h1>
 
@@ -162,80 +127,85 @@
         </div>
       </div>
     </section>
-    <!-- menu section end -->
 
-    <!-- products section start -->
     <section class="products" id="products">
       <h1 class="heading">våre <span>produkter</span></h1>
 
       <div class="box-container">
-        <div class="box">
+        <div class="box product-card">
           <div class="box-head">
-            <span class="title">MINI BURGER</span>
-            <a href="produkter.html" class="name">Halal Burger</a>
+            <span class="title product-description">110gr / 300 Kal</span>
+            <a href="#" class="name product-name">Halal Burger</a>
           </div>
+
           <div class="image">
             <img src="images/product-1.png" alt="Halal Burger" />
           </div>
+
           <div class="box-bottom">
             <div class="info">
-              <b class="price">60 Kr</b>
-              <span class="amount">110gr / 300 Kal</span>
+              <b class="price product-price">60 Kr</b>
+              <span class="amount">MINI BURGER</span>
             </div>
+
             <div class="product-btn">
-              <a href="produkter.html">
+              <button class="add-to-cart">
                 <i class="fas fa-plus"></i>
-              </a>
+              </button>
             </div>
           </div>
         </div>
 
-        <div class="box">
+        <div class="box product-card">
           <div class="box-head">
-            <span class="title">MINI BURGER</span>
-            <a href="produkter.html" class="name">Glutenfri Burger</a>
+            <span class="title product-description">110gr / 300 Kal</span>
+            <a href="#" class="name product-name">Glutenfri Burger</a>
           </div>
+
           <div class="image">
             <img src="images/product-2.png" alt="Glutenfri Burger" />
           </div>
+
           <div class="box-bottom">
             <div class="info">
-              <b class="price">60 Kr</b>
-              <span class="amount">110gr / 300 Kal</span>
+              <b class="price product-price">60 Kr</b>
+              <span class="amount">MINI BURGER</span>
             </div>
+
             <div class="product-btn">
-              <a href="produkter.html">
+              <button class="add-to-cart">
                 <i class="fas fa-plus"></i>
-              </a>
+              </button>
             </div>
           </div>
         </div>
 
-        <div class="box dark-bg">
+        <div class="box product-card dark-bg">
           <div class="box-head">
-            <span class="title">MINI BURGER</span>
-            <a href="produkter.html" class="name">Vegetar Burger</a>
+            <span class="title product-description">110gr / 300 Kal</span>
+            <a href="#" class="name product-name">Vegetar Burger</a>
           </div>
+
           <div class="image">
             <img src="images/dark-product.jpg" alt="Vegetar Burger" />
           </div>
+
           <div class="box-bottom">
             <div class="info">
-              <b class="price">60 Kr</b>
-              <span class="amount">110gr / 300 Kal</span>
+              <b class="price product-price">60 Kr</b>
+              <span class="amount">MINI BURGER</span>
             </div>
+
             <div class="product-btn">
-              <a href="produkter.html">
+              <button class="add-to-cart">
                 <i class="fas fa-plus"></i>
-              </a>
+              </button>
             </div>
           </div>
         </div>
       </div>
     </section>
-    <!-- products section end -->
 
-    <!-- about section start -->
     <section class="about" id="about">
       <h1 class="heading">om <span>oss</span></h1>
 
@@ -273,13 +243,12 @@
             cheddarost og løkmarmelade. Topp gjerne det hele med sylteagurk og
             server ovnsstekte poteter til.
           </p>
+
           <a href="about.html" class="btn">Lær mer</a>
         </div>
       </div>
     </section>
-    <!-- about section end -->
 
-    <!-- review section start -->
     <section class="review" id="review">
       <h1 class="heading">kundens <span>vurdering</span></h1>
 
@@ -339,9 +308,7 @@
         </div>
       </div>
     </section>
-    <!-- review section end -->
 
-    <!-- contact section start -->
     <section class="contact" id="contact">
       <h1 class="heading">kontakt <span>oss</span></h1>
 
@@ -375,9 +342,7 @@
         </form>
       </div>
     </section>
-    <!-- contact section end -->
 
-    <!-- blogs section start -->
     <section class="blogs" id="blogs">
       <h1 class="heading">vår <span>blogg</span></h1>
 
@@ -432,9 +397,7 @@
         </div>
       </div>
     </section>
-    <!-- blogs section end -->
 
-    <!-- footer section start -->
     <section class="footer">
       <div class="search">
         <input type="text" class="search-input" placeholder="Search" />
@@ -463,8 +426,8 @@
         Laget av <span>Group 7</span> | Alle Rettigheter Forbeholdt
       </div>
     </section>
-    <!-- footer section end -->
 
     <script src="js/script.js"></script>
+    <script src="js/cart.js"></script>
   </body>
 </html>
