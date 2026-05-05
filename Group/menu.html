@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+
+  <title>VÅR MENY</title>
+  <link rel="stylesheet" href="styles/style.css" />
+
+  <style>
+    .cart-items-container .cart-empty {
+      color: #000;
+      font-size: 1.5rem;
+      padding: 1rem;
+    }
+
+    .cart-items-container .cart-total {
+      color: #000;
+      font-size: 1.7rem;
+      font-weight: bold;
+      padding: 1rem;
+    }
+  </style>
+</head>
+
+<body>
+
+<header class="header">
+  <a href="index.html" class="logo">
+    <img src="images/logo.png" alt="logo" />
+  </a>
+
+  <nav class="navbar">
+    <a href="index.html">Hjem</a>
+    <a href="about.html">Om Oss</a>
+    <a href="menu.html" class="active">Meny</a>
+    <a href="produkter.html">Produkter</a>
+    <a href="review.html">Anmeldelse</a>
+    <a href="contact.html">Kontakt</a>
+    <a href="blogs.html">Blogger</a>
+  </nav>
+
+  <div class="buttons">
+    <button id="search-btn" type="button">
+      <i class="fas fa-search"></i>
+    </button>
+
+    <button id="cart-btn" type="button">
+      <i class="fas fa-shopping-cart"></i>
+      <span id="cartCount">0</span>
+    </button>
+
+    <button id="menu-btn" type="button">
+      <i class="fas fa-bars"></i>
+    </button>
+  </div>
+
+  <div class="search-form">
+    <input
+      type="text"
+      class="search-input"
+      id="search-box"
+      placeholder="search here"
+    />
+    <i class="fas fa-search"></i>
+  </div>
+
+  <div class="cart-items-container" id="cartItemsContainer">
+    <p class="cart-empty">Cart is empty.</p>
+  </div>
+</header>
+
+<section class="menu" id="menu">
+  <h1 class="heading">VÅR <span>MENY</span></h1>
+
+  <div class="box-container">
+    <div class="box">
+      <div class="box-head">
+        <img src="images/menu-1.png" alt="menu" />
+        <span class="menu-category">PIZZA</span>
+        <h3>6 Mini Pizzaer</h3>
+        <div class="price">104.99 Kr <span>119.99</span></div>
+      </div>
+
+      <div class="box-bottom">
+        <a href="#" class="btn add-cart-btn"
+           data-id="101"
+           data-name="6 Mini Pizzaer"
+           data-price="104.99"
+           data-image="images/menu-1.png">
+          legg til handlekurv
+        </a>
+      </div>
+    </div>
+
+    <div class="box">
+      <div class="box-head">
+        <img src="images/menu-2.png" alt="menu" />
+        <span class="menu-category">Burger</span>
+        <h3>5 Mini Burgere</h3>
+        <div class="price">99.99 Kr <span>109.99</span></div>
+      </div>
+
+      <div class="box-bottom">
+        <a href="#" class="btn add-cart-btn"
+           data-id="102"
+           data-name="5 Mini Burgere"
+           data-price="99.99"
+           data-image="images/menu-2.png">
+          legg til handlekurv
+        </a>
+      </div>
+    </div>
+
+    <div class="box">
+      <div class="box-head">
+        <img src="images/menu-3.png" alt="menu" />
+        <span class="menu-category">PIZZA</span>
+        <h3>2 Blandede Pizzaer</h3>
+        <div class="price">49.99 Kr <span>59.99</span></div>
+      </div>
+
+      <div class="box-bottom">
+        <a href="#" class="btn add-cart-btn"
+           data-id="103"
+           data-name="2 Blandede Pizzaer"
+           data-price="49.99"
+           data-image="images/menu-3.png">
+          legg til handlekurv
+        </a>
+      </div>
+    </div>
+
+    <div class="box">
+      <div class="box-head">
+        <img src="images/menu-4.png" alt="menu" />
+        <span class="menu-category">Burger</span>
+        <h3>3 Burgere</h3>
+        <div class="price">79.99 Kr <span>89.99</span></div>
+      </div>
+
+      <div class="box-bottom">
+        <a href="#" class="btn add-cart-btn"
+           data-id="104"
+           data-name="3 Burgere"
+           data-price="79.99"
+           data-image="images/menu-4.png">
+          legg til handlekurv
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="footer">
+  <div class="search">
+    <input type="text" class="search-input" placeholder="Search" />
+    <button class="btn btn-primary">søk</button>
+  </div>
+
+  <div class="share">
+    <a href="#" class="fab fa-facebook"></a>
+    <a href="#" class="fab fa-twitter"></a>
+    <a href="#" class="fab fa-instagram"></a>
+    <a href="#" class="fab fa-linkedin"></a>
+    <a href="#" class="fab fa-pinterest"></a>
+  </div>
+
+  <div class="links">
+    <a href="index.html">Hjem</a>
+    <a href="about.html">Om</a>
+    <a href="menu.html" class="active">Meny</a>
+    <a href="produkter.html">Produkter</a>
+    <a href="review.html">Anmeldelse</a>
+    <a href="contact.html">Kontakt</a>
+    <a href="blogs.html">Blogger</a>
+  </div>
+
+  <div class="credit">
+    laget av <span>Group 10</span> | alle rettigheter forbehold
+  </div>
+</section>
+
+<script src="js/script.js"></script>
+
+<script>
+  const CART_KEY = "cartItems";
+
+  const cartCount = document.getElementById("cartCount");
+  const cartItemsContainer = document.getElementById("cartItemsContainer");
+  const cartButton = document.getElementById("cart-btn");
+
+  function getCart() {
+    return JSON.parse(localStorage.getItem(CART_KEY)) || [];
+  }
+
+  function saveCart(cart) {
+    localStorage.setItem(CART_KEY, JSON.stringify(cart));
+    updateCartCount();
+    renderCartItems();
+  }
+
+  function updateCartCount() {
+    const cart = getCart();
+
+    const count = cart.reduce(function(total, item) {
+      return total + (item.quantity || 1);
+    }, 0);
+
+    cartCount.textContent = count;
+  }
+
+  function openCart() {
+    cartItemsContainer.classList.add("active");
+    window.location.hash = "cart";
+  }
+
+  function closeCart() {
+    cartItemsContainer.classList.remove("active");
+  }
+
+  function addToCart(product) {
+    const cart = getCart();
+
+    const existingItem = cart.find(function(item) {
+      return item.id === product.id;
+    });
+
+    if (existingItem) {
+      existingItem.quantity++;
+    } else {
+      cart.push({
+        id: product.id,
+        name: product.name,
+        price: product.price,
+        image: product.image,
+        quantity: 1
+      });
+    }
+
+    saveCart(cart);
+    openCart();
+  }
+
+  function removeOneFromCart(id) {
+    let cart = getCart();
+
+    const item = cart.find(function(product) {
+      return product.id === id;
+    });
+
+    if (!item) return;
+
+    item.quantity--;
+
+    if (item.quantity <= 0) {
+      cart = cart.filter(function(product) {
+        return product.id !== id;
+      });
+    }
+
+    saveCart(cart);
+  }
+
+  function renderCartItems() {
+    const cart = getCart();
+
+    cartItemsContainer.innerHTML = "";
+
+    if (cart.length === 0) {
+      cartItemsContainer.innerHTML = '<p class="cart-empty">Cart is empty.</p>';
+      return;
+    }
+
+    let total = 0;
+
+    cart.forEach(function(item) {
+      total += item.price * item.quantity;
+
+      const cartItem = document.createElement("div");
+      cartItem.className = "cart-item";
+
+      cartItem.innerHTML = `
+        <i class="fas fa-times remove-cart-item" data-id="${item.id}"></i>
+        <img src="${item.image || "images/menu-1.png"}" alt="${item.name}" />
+        <div class="content">
+          <h3>${item.name}</h3>
+          <div class="price">${item.price} Kr x ${item.quantity}</div>
+        </div>
+      `;
+
+      cartItemsContainer.appendChild(cartItem);
+    });
+
+    const totalDiv = document.createElement("div");
+    totalDiv.className = "cart-total";
+    totalDiv.textContent = "Total: " + total.toFixed(2) + " Kr";
+    cartItemsContainer.appendChild(totalDiv);
+
+    const checkout = document.createElement("a");
+    checkout.href = "#";
+    checkout.className = "btn";
+    checkout.textContent = "checkout now";
+    cartItemsContainer.appendChild(checkout);
+
+    const removeButtons = document.querySelectorAll(".remove-cart-item");
+
+    removeButtons.forEach(function(button) {
+      button.addEventListener("click", function() {
+        const id = Number(button.getAttribute("data-id"));
+        removeOneFromCart(id);
+      });
+    });
+  }
+
+  const addButtons = document.querySelectorAll(".add-cart-btn");
+
+  addButtons.forEach(function(button) {
+    button.addEventListener("click", function(event) {
+      event.preventDefault();
+
+      const product = {
+        id: Number(button.getAttribute("data-id")),
+        name: button.getAttribute("data-name"),
+        price: Number(button.getAttribute("data-price")),
+        image: button.getAttribute("data-image")
+      };
+
+      addToCart(product);
+    });
+  });
+
+  cartButton.addEventListener("click", function() {
+    renderCartItems();
+    openCart();
+  });
+
+  window.addEventListener("storage", function() {
+    updateCartCount();
+    renderCartItems();
+  });
+
+  document.addEventListener("DOMContentLoaded", function() {
+    updateCartCount();
+    renderCartItems();
+
+    if (window.location.hash === "#cart") {
+      openCart();
+    }
+  });
+</script>
+
+</body>
+</html>

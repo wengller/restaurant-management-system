@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Reservation</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+  <link rel="stylesheet" href="styles/style.css" />
+
+  <style>
+    .reservation-container {
+      padding: 3.5rem 7%;
+    }
+
+    .form-box {
+      background: white;
+      padding: 2.5rem;
+      border-radius: 1.5rem;
+      max-width: 50rem;
+    }
+
+    input {
+      width: 100%;
+      padding: 1.2rem;
+      margin-bottom: 1.2rem;
+      border: 1px solid #ccc;
+      border-radius: 0.6rem;
+      font-size: 1.5rem;
+      text-transform: none;
+    }
+
+    .submit-btn {
+      background: var(--black-color);
+      color: white;
+      padding: 1.2rem 2.5rem;
+      border-radius: 0.6rem;
+      cursor: pointer;
+      font-size: 1.5rem;
+    }
+
+    #reservationMessage {
+      margin-top: 1.5rem;
+      font-weight: bold;
+      font-size: 1.5rem;
+    }
+  </style>
+</head>
+
+<body>
+
+<header class="header">
+  <a href="index.html" class="logo">
+    <img src="images/logo.png" alt="logo">
+  </a>
+
+  <nav class="navbar">
+    <a href="index.html">Hjem</a>
+    <a href="about.html">Om Oss</a>
+    <a href="menu.html">Meny</a>
+    <a href="produkter.html">Produkter</a>
+    <a href="review.html">Anmeldelse</a>
+    <a href="contact.html" class="active">Kontakt</a>
+    <a href="blogs.html">Blogger</a>
+  </nav>
+
+  <div class="buttons">
+    <button id="search-btn" type="button">
+      <i class="fas fa-search"></i>
+    </button>
+
+    <button id="cart-btn" type="button" onclick="window.location.href='menu.html#cart'">
+      <i class="fas fa-shopping-cart"></i>
+      <span id="cartCount">0</span>
+    </button>
+
+    <button id="menu-btn" type="button">
+      <i class="fas fa-bars"></i>
+    </button>
+  </div>
+</header>
+
+<main class="reservation-container">
+  <h1 class="heading">book <span>table</span></h1>
+
+  <div class="form-box">
+    <form id="reservationForm">
+      <input type="text" id="fullName" placeholder="Full Name" required>
+      <input type="email" id="email" placeholder="Email" required>
+      <input type="text" id="phone" placeholder="Phone" required>
+      <input type="date" id="date" required>
+      <input type="time" id="time" required>
+      <input type="number" id="guestCount" placeholder="Guest Count" min="1" required>
+
+      <button class="submit-btn" type="submit">Book Table</button>
+    </form>
+
+    <p id="reservationMessage"></p>
+  </div>
+</main>
+
+<script src="js/script.js"></script>
+
+<script>
+  const API_URL = "http://localhost:5025/api/Reservations";
+  const CART_KEY = "cartItems";
+
+  const form = document.getElementById("reservationForm");
+  const cartCount = document.getElementById("cartCount");
+  const reservationMessage = document.getElementById("reservationMessage");
+
+  function getCart() {
+    return JSON.parse(localStorage.getItem(CART_KEY)) || [];
+  }
+
+  function updateCartCount() {
+    const cart = getCart();
+
+    const count = cart.reduce(function(total, item) {
+      return total + (item.quantity || 1);
+    }, 0);
+
+    cartCount.textContent = count;
+  }
+
+  form.addEventListener("submit", async function(e) {
+    e.preventDefault();
+
+    const reservation = {
+      fullName: document.getElementById("fullName").value,
+      email: document.getElementById("email").value,
+      phone: document.getElementById("phone").value,
+      date: document.getElementById("date").value,
+      time: document.getElementById("time").value,
+      guestCount: Number(document.getElementById("guestCount").value)
+    };
+
+    try {
+      const response = await fetch(API_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(reservation)
+      });
+
+      if (response.ok) {
+        reservationMessage.textContent = "Reservation created successfully!";
+        reservationMessage.style.color = "green";
+        form.reset();
+      } else {
+        const error = await response.text();
+        reservationMessage.textContent = "Reservation failed: " + error;
+        reservationMessage.style.color = "red";
+      }
+    } catch {
+      reservationMessage.textContent = "Backend connection error!";
+      reservationMessage.style.color = "red";
+    }
+  });
+
+  window.addEventListener("storage", updateCartCount);
+  document.addEventListener("DOMContentLoaded", updateCartCount);
+</script>
+
+</body>
+</html>

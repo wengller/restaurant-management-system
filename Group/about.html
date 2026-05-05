@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+  />
+
+  <title>About</title>
+  <link rel="stylesheet" href="styles/style.css" />
+
+  
+</head>
+
+<body>
+
+<header class="header">
+  <a href="index.html" class="logo">
+    <img src="images/logo.png" alt="logo" />
+  </a>
+
+  <nav class="navbar">
+    <a href="index.html">Hjem</a>
+    <a href="about.html" class="active">Om Oss</a>
+    <a href="menu.html">Meny</a>
+    <a href="produkter.html">Produkter</a>
+    <a href="review.html">Anmeldelse</a>
+    <a href="contact.html">Kontakt</a>
+    <a href="blogs.html">Blogger</a>
+  </nav>
+
+  <div class="buttons">
+    <button id="search-btn" type="button">
+      <i class="fas fa-search"></i>
+    </button>
+
+    <button id="cart-btn" type="button" onclick="window.location.href='menu.html#cart'">
+      <i class="fas fa-shopping-cart"></i>
+      <span id="cartCount">0</span>
+    </button>
+
+    <button id="menu-btn" type="button">
+      <i class="fas fa-bars"></i>
+    </button>
+  </div>
+</header>
+
+<section class="about" id="about">
+  <h1 class="heading">om <span>oss</span></h1>
+
+  <div class="row">
+    <div class="image">
+      <img src="images/about.jpg" alt="about" />
+    </div>
+
+    <div class="content">
+      <h3>Hva er den hemmelige oppskriften på burgere?</h3>
+
+      <p>
+        Når vi lager burgere, er det viktig å ikke jobbe for mye med kjøttdeigen.
+        Da bevares strukturen i kjøttet og den naturlige fordelingen av kjøtt, fett og luft,
+        og du unngår kompakte burgere.
+      </p>
+
+      <p>
+        Løkmarmelade: Kutt løken i terninger eller skiver. Varm oljen i en kjele,
+        tilsett løken og fres den blank og myk.
+      </p>
+
+      <p>
+        Tilsett resten av ingrediensene og la løken småkoke på middels varme i 15–20 minutter,
+        eller til den har marmeladekonsistens. Smak til med salt og pepper.
+      </p>
+
+      <p>
+        Hjemmelaget burger: Ha litt vann på en fjøl og form burgere.
+        Ikke jobb for mye med kjøttdeigen. Krydre burgerne.
+      </p>
+
+      <p>
+        Stek eller grill burgerne ett til to minutter på hver side på høy varme.
+        Etterstek på lav varme med lokk, så blir de ekstra saftige.
+      </p>
+
+      <p>
+        Server med briochebrød, grønn salat, tomatskiver, chilimajones,
+        cheddarost og løkmarmelade. Topp gjerne det hele med sylteagurk
+        og server ovnsstekte poteter til.
+      </p>
+
+      <a href="menu.html" class="btn">Se meny</a>
+    </div>
+  </div>
+</section>
+
+<section class="footer">
+  <div class="search">
+    <input type="text" class="search-input" placeholder="Search" />
+    <button class="btn btn-primary">search</button>
+  </div>
+
+  <div class="share">
+    <a href="#" class="fab fa-facebook"></a>
+    <a href="#" class="fab fa-twitter"></a>
+    <a href="#" class="fab fa-instagram"></a>
+    <a href="#" class="fab fa-linkedin"></a>
+    <a href="#" class="fab fa-pinterest"></a>
+  </div>
+
+  <div class="links">
+    <a href="index.html">Hjem</a>
+    <a href="about.html" class="active">Om</a>
+    <a href="menu.html">Meny</a>
+    <a href="produkter.html">Produkter</a>
+    <a href="review.html">Anmeldelse</a>
+    <a href="contact.html">Kontakt</a>
+    <a href="blogs.html">Blogger</a>
+  </div>
+
+  <div class="credit">
+    Laget av <span>Group 10</span> | Alle Rettigheter Forbeholdt
+  </div>
+</section>
+
+<script src="js/script.js"></script>
+
+<script>
+  const CART_KEY = "cartItems";
+
+  function getCart() {
+    return JSON.parse(localStorage.getItem(CART_KEY)) || [];
+  }
+
+  function updateCartCount() {
+    const cart = getCart();
+
+    const count = cart.reduce(function(total, item) {
+      return total + (item.quantity || 1);
+    }, 0);
+
+    const cartCount = document.getElementById("cartCount");
+
+    if (cartCount) {
+      cartCount.textContent = count;
+    }
+  }
+
+  window.addEventListener("storage", updateCartCount);
+  document.addEventListener("DOMContentLoaded", updateCartCount);
+</script>
+
+</body>
+</html>

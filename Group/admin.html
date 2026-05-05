@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Admin Panel</title>
+
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #e9423a;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .admin-container {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      color: white;
+      font-size: 36px;
+    }
+
+    .box {
+      background: white;
+      padding: 25px;
+      border-radius: 15px;
+      margin-bottom: 25px;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 12px;
+      box-sizing: border-box;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+
+    button {
+      background: black;
+      color: white;
+      padding: 10px 18px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .edit-btn {
+      background: orange;
+    }
+
+    .delete-btn {
+      background: #e9423a;
+    }
+
+    .logout-btn {
+      background: #555;
+      float: right;
+    }
+
+    .cancel-btn {
+      background: #555;
+      display: none;
+    }
+
+    .product-row {
+      display: grid;
+      grid-template-columns: 90px 1fr 170px;
+      align-items: center;
+      border-bottom: 1px solid #ddd;
+      padding: 15px 0;
+      gap: 15px;
+    }
+
+    .product-row img {
+      width: 75px;
+      height: 75px;
+      object-fit: contain;
+    }
+
+    .product-info {
+      font-size: 16px;
+    }
+
+    .product-info strong {
+      font-size: 18px;
+    }
+
+    .actions {
+      display: flex;
+      gap: 8px;
+      justify-content: flex-end;
+    }
+
+    #message,
+    #loginMessage {
+      font-weight: bold;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="admin-container">
+  <h1>Admin Panel</h1>
+
+  <div id="loginBox" class="box">
+    <h2>Admin Login</h2>
+    <input type="text" id="username" placeholder="Brukernavn">
+    <input type="password" id="password" placeholder="Passord">
+    <button type="button" onclick="login()">Logg inn</button>
+    <p id="loginMessage"></p>
+  </div>
+
+  <div id="adminPanel" style="display:none;">
+    <button class="logout-btn" onclick="logout()">Logg ut</button>
+
+    <div class="box">
+      <h2 id="formTitle">Legg til produkt</h2>
+
+      <form id="productForm">
+        <input type="text" id="name" placeholder="Produktnavn" required>
+        <input type="text" id="description" placeholder="Beskrivelse" required>
+        <input type="number" id="price" placeholder="Pris" required>
+        <input type="text" id="imageUrl" placeholder="Bilde URL, f.eks. images/menu-2.png">
+
+        <button type="submit" id="saveBtn">Legg til produkt</button>
+        <button type="button" id="cancelBtn" class="cancel-btn" onclick="cancelEdit()">Avbryt redigering</button>
+      </form>
+
+      <p id="message"></p>
+    </div>
+
+    <div class="box">
+      <h2>Produkter</h2>
+      <div id="productsList">Laster produkter...</div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const API_URL = "http://localhost:5025/api/Products";
+  const LOGIN_URL = "http://localhost:5025/api/Auth/login";
+  const DEFAULT_IMAGE = "images/menu-2.png";
+
+  const loginBox = document.getElementById("loginBox");
+  const adminPanel = document.getElementById("adminPanel");
+  const loginMessage = document.getElementById("loginMessage");
+
+  const productForm = document.getElementById("productForm");
+  const productsList = document.getElementById("productsList");
+  const message = document.getElementById("message");
+
+  const formTitle = document.getElementById("formTitle");
+  const saveBtn = document.getElementById("saveBtn");
+  const cancelBtn = document.getElementById("cancelBtn");
+
+  let editId = null;
+
+  window.onload = function () {
+    const token = localStorage.getItem("token");
+
+    if (token) {
+      loginBox.style.display = "none";
+      adminPanel.style.display = "block";
+      loadProducts();
+    }
+  };
+
+  async function login() {
+    const username = document.getElementById("username").value.trim();
+    const password = document.getElementById("password").value.trim();
+
+    try {
+      const response = await fetch(LOGIN_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          username: username,
+          password: password
+        })
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+
+        localStorage.setItem("token", data.token);
+
+        loginBox.style.display = "none";
+        adminPanel.style.display = "block";
+        loginMessage.textContent = "";
+
+        loadProducts();
+      } else {
+        loginMessage.textContent = "Feil brukernavn eller passord.";
+        loginMessage.style.color = "red";
+      }
+    } catch (error) {
+      loginMessage.textContent = "Kan ikke koble til backend.";
+      loginMessage.style.color = "red";
+      console.error(error);
+    }
+  }
+
+  function logout() {
+    localStorage.removeItem("token");
+    location.reload();
+  }
+
+  function safeText(value) {
+    return String(value || "").replace(/'/g, "\\'");
+  }
+
+  function getSafeImage(product) {
+    if (product.imageUrl && product.imageUrl.trim() !== "") {
+      return product.imageUrl;
+    }
+
+    return DEFAULT_IMAGE;
+  }
+
+  async function loadProducts() {
+    productsList.innerHTML = "Laster produkter...";
+
+    try {
+      const response = await fetch(API_URL);
+
+      if (!response.ok) {
+        productsList.innerHTML = "Kunne ikke laste produkter.";
+        return;
+      }
+
+      const products = await response.json();
+
+      productsList.innerHTML = "";
+
+      if (products.length === 0) {
+        productsList.innerHTML = "Ingen produkter funnet.";
+        return;
+      }
+
+      products.forEach(function(product) {
+        const row = document.createElement("div");
+        row.className = "product-row";
+
+        const image = getSafeImage(product);
+
+        row.innerHTML = `
+          <img 
+            src="${image}" 
+            alt="${product.name}"
+            onerror="this.onerror=null; this.src='${DEFAULT_IMAGE}';"
+          >
+
+          <div class="product-info">
+            <strong>${product.name}</strong><br>
+            ${product.description}<br>
+            ${product.price} kr<br>
+            <small>${product.imageUrl || "Ingen bilde URL"}</small>
+          </div>
+
+          <div class="actions">
+            <button 
+              class="edit-btn" 
+              onclick="startEdit(${product.id}, '${safeText(product.name)}', '${safeText(product.description)}', ${product.price}, '${safeText(product.imageUrl)}')">
+              Rediger
+            </button>
+
+            <button class="delete-btn" onclick="deleteProduct(${product.id})">
+              Slett
+            </button>
+          </div>
+        `;
+
+        productsList.appendChild(row);
+      });
+    } catch (error) {
+      productsList.innerHTML = "Backend connection error.";
+      console.error(error);
+    }
+  }
+
+  function startEdit(id, name, description, price, imageUrl) {
+    editId = id;
+
+    document.getElementById("name").value = name;
+    document.getElementById("description").value = description;
+    document.getElementById("price").value = price;
+    document.getElementById("imageUrl").value = imageUrl || DEFAULT_IMAGE;
+
+    formTitle.textContent = "Rediger produkt";
+    saveBtn.textContent = "Lagre endringer";
+    cancelBtn.style.display = "inline-block";
+
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
+  function cancelEdit() {
+    editId = null;
+    productForm.reset();
+
+    formTitle.textContent = "Legg til produkt";
+    saveBtn.textContent = "Legg til produkt";
+    cancelBtn.style.display = "none";
+    message.textContent = "";
+  }
+
+  productForm.addEventListener("submit", async function(event) {
+    event.preventDefault();
+
+    const token = localStorage.getItem("token");
+
+    const imageValue = document.getElementById("imageUrl").value.trim();
+
+    const product = {
+      name: document.getElementById("name").value.trim(),
+      description: document.getElementById("description").value.trim(),
+      price: Number(document.getElementById("price").value),
+      imageUrl: imageValue === "" ? DEFAULT_IMAGE : imageValue
+    };
+
+    try {
+      let response;
+
+      if (editId) {
+        response = await fetch(`${API_URL}/${editId}`, {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": token
+          },
+          body: JSON.stringify(product)
+        });
+      } else {
+        response = await fetch(API_URL, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": token
+          },
+          body: JSON.stringify(product)
+        });
+      }
+
+      if (response.ok) {
+        message.textContent = editId ? "Produktet ble oppdatert!" : "Produktet ble lagt til!";
+        message.style.color = "green";
+
+        cancelEdit();
+        loadProducts();
+      } else {
+        const error = await response.text();
+        message.textContent = "Lagring feilet: " + error;
+        message.style.color = "red";
+      }
+    } catch (error) {
+      message.textContent = "Backend connection error!";
+      message.style.color = "red";
+      console.error(error);
+    }
+  });
+
+  async function deleteProduct(id) {
+    const confirmDelete = confirm("Vil du slette dette produktet?");
+
+    if (!confirmDelete) {
+      return;
+    }
+
+    const token = localStorage.getItem("token");
+
+    try {
+      const response = await fetch(`${API_URL}/${id}`, {
+        method: "DELETE",
+        headers: {
+          "Authorization": token
+        }
+      });
+
+      if (response.ok) {
+        loadProducts();
+      } else {
+        const error = await response.text();
+        alert("Sletting feilet: " + error);
+      }
+    } catch (error) {
+      alert("Backend connection error!");
+      console.error(error);
+    }
+  }
+</script>
+
+</body>
+</html>
